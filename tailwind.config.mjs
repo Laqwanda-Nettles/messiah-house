@@ -13,5 +13,8 @@ export default {
       },
     },
   },
-  plugins: [],
+  daisyui: {
+    themes: ["emerald"],
+  },
+  plugins: [require("daisyui")],
 };
