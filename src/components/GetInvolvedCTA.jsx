@@ -8,7 +8,7 @@ export default function GetInvolvedCTA() {
     >
       <div className="hero-overlay bg-opacity-60"></div>
       <div className="hero-content flex flex-wrap">
-        <div className="card bg-base-100 w-96 shadow-xl">
+        <div className="card bg-base-100 max-w-96 h-60 shadow-xl">
           <div className="card-body">
             <h2 className="card-title">Volunteer</h2>
             <p className="text-lg">
@@ -20,7 +20,7 @@ export default function GetInvolvedCTA() {
             </div>
           </div>
         </div>
-        <div className="card bg-base-100 w-96 shadow-xl">
+        <div className="card bg-base-100 max-w-96 shadow-xl">
           <div className="card-body">
             <h2 className="card-title">Donate</h2>
             <p className="text-lg">
