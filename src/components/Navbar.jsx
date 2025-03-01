@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Navbar() {
   return (
-    <div className="navbar bg-info flex">
+    <div className="navbar bg-info flex relative z-50">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -23,7 +23,7 @@ export default function Navbar() {
           </div>
           <ul
             tabIndex={0}
-            className="font-semibold menu menu-lg dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="font-semibold menu menu-lg dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow"
           >
             <li>
               <Link href={"/services"}>Services</Link>
@@ -33,6 +33,11 @@ export default function Navbar() {
             </li>
             <li>
               <Link href={"/about"}>About Us</Link>
+              <ul className="p-2">
+                <li>
+                  <Link href={"/gallery"}>Gallery</Link>
+                </li>
+              </ul>
             </li>
           </ul>
         </div>
@@ -40,7 +45,7 @@ export default function Navbar() {
           <img
             src="/logo.jpg"
             alt="logo"
-            className="max-w-32 lg:max-w-40 rounded-md "
+            className="max-w-32 min-h-11 lg:max-w-40 rounded-md "
           />
         </Link>
       </div>
@@ -53,7 +58,17 @@ export default function Navbar() {
             <Link href={"/events"}>Events</Link>
           </li>
           <li>
-            <Link href={"/about"}>About Us</Link>
+            <details>
+              <summary>About Us</summary>
+              <ul className="p-2">
+                <li>
+                  <Link href={"/about"}>About</Link>
+                </li>
+                <li>
+                  <Link href={"/gallery"}>Gallery</Link>
+                </li>
+              </ul>
+            </details>
           </li>
         </ul>
       </div>
