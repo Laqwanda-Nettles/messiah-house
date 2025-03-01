@@ -1,11 +1,10 @@
 import "@/styles/globals.css";
-import { Montserrat } from "next/font/google";
-
-const montserrat = Montserrat({ subsets: ["latin"] });
+import { Parkinsans } from "next/font/google";
+const parkinsans = Parkinsans({ subsets: ["latin"] });
 
 export default function App({ Component, pageProps }) {
   return (
-    <main className={montserrat.className}>
+    <main className={parkinsans.className}>
       <Component {...pageProps} />
     </main>
   );
