@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function GetInvolvedCTA() {
   return (
     <div
@@ -16,7 +18,9 @@ export default function GetInvolvedCTA() {
               lives.
             </p>
             <div className="card-actions justify-center">
-              <button className="btn btn-accent">Volunteer Now</button>
+              <Link href={"/volunteer"} className="btn btn-accent">
+                Volunteer Now
+              </Link>
             </div>
           </div>
         </div>
