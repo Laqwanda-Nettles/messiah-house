@@ -1,20 +1,21 @@
-// components/GalleryDisplay.js
-import Image from "next/image";
 import { useState } from "react";
+import Image from "next/image";
+import galleryData from "../data/gallery.json";
 
 export default function GalleryDisplay() {
-  const imagePaths = Array.from(
-    { length: 16 },
-    (_, i) => `/gallery/gallery${i + 1}.jpeg`
-  );
   const [loading, setLoading] = useState(true);
+  let loadedImages = 0;
 
   const handleImageLoad = () => {
-    setLoading(false);
+    loadedImages += 1;
+    if (loadedImages === galleryData.length) {
+      setLoading(false); // Hide loading spinner when all images are loaded
+    }
   };
 
   return (
-    <div>
+    <div className="p-4">
+      {/* Loading Spinner */}
       {loading && (
         <div className="flex justify-center items-center gap-4 mb-5">
           <span className="loading loading-spinner loading-lg text-primary"></span>
@@ -23,23 +24,27 @@ export default function GalleryDisplay() {
           </p>
         </div>
       )}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
-        {imagePaths.map((path) => (
-          <div key={path} className="card w-full bg-base-100 shadow-xl">
-            <figure
-              className="aspect-w-16 aspect-h-9"
-              style={{ width: "350px", height: "400px" }}
-            >
-              <Image
-                src={path}
-                alt={`Gallery Image ${path}`}
-                layout="fill"
-                objectFit="cover"
-                className="rounded-xl shadow-md shadow-success hover:shadow-lg hover:scale-105 hover:shadow-primary"
-                onLoadingComplete={handleImageLoad}
-                unoptimized={true}
-              />
-            </figure>
+
+      {/* Image Grid */}
+      <div
+        className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 transition-opacity duration-500 ${
+          loading ? "opacity-50" : "opacity-100"
+        }`}
+      >
+        {galleryData.map((image, index) => (
+          <div
+            key={index}
+            className="relative w-full aspect-square overflow-hidden rounded-xl shadow-md shadow-zinc-500 hover:shadow-lg hover:scale-105 transition-transform"
+          >
+            <Image
+              src={image.src}
+              alt={image.alt}
+              layout="fill"
+              objectFit="cover"
+              className="rounded-xl"
+              priority={index < 4} // Faster loading for the first few images
+              onLoadingComplete={handleImageLoad} // Trigger when image loads
+            />
           </div>
         ))}
       </div>
