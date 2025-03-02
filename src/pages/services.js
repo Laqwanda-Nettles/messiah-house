@@ -5,10 +5,19 @@ import JoinProgramCTA from "@/components/JoinProgramCTA";
 import Navbar from "@/components/Navbar";
 import Programs from "@/components/Programs";
 import Testimonials from "@/components/Testimonials";
+import Head from "next/head";
 
 export default function Services() {
   return (
     <>
+      <Head>
+        <title>Services</title>
+        <meta
+          name="description"
+          content="Messiah House Community Development Corporation non-profit Services and Programs."
+          key="desc"
+        />
+      </Head>
       <Navbar />
       <Header
         title={"Services"}

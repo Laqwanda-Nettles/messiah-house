@@ -3,10 +3,19 @@ import GetInvolvedCTA from "@/components/GetInvolvedCta";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import ServiceSection from "@/components/ServiceSection";
+import Head from "next/head";
 
 export default function Home() {
   return (
     <div>
+      <Head>
+        <title>Messiah&apos;s House</title>
+        <meta
+          name="description"
+          content="Messiah House Community Development Corporation non-profit home page."
+          key="desc"
+        />
+      </Head>
       <Navbar />
       <Hero />
       <div className="m-5">
