@@ -42,6 +42,7 @@ export default function Programs() {
         )
         .map((service, index) => (
           <section
+            id={service.category.toLowerCase().replace(/\s+/g, "-")}
             key={service.category}
             className={`flex flex-col ${
               index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
@@ -79,6 +80,7 @@ export default function Programs() {
             )
             .map((service) => (
               <div
+                id={service.category.toLowerCase().replace(/\s+/g, "-")}
                 key={service.category}
                 className="card bg-base-100 shadow-lg shadow-base-300 w-full"
               >
