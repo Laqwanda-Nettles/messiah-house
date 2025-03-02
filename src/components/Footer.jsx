@@ -1,30 +1,59 @@
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function Footer() {
+  const [services, setServices] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const response = await fetch("/api/services");
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch services");
+        }
+
+        const data = await response.json();
+        setServices(data.services);
+      } catch (error) {
+        console.error("Error fetching services:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchServices();
+  }, []);
+
   return (
     <>
       <footer className="footer bg-info text-base-content p-10 font-semibold">
         <nav>
           <h6 className="footer-title font-bold">Services</h6>
-          <Link href={"/"} className="link link-hover">
-            Mentorship
-          </Link>
-          <Link href={"/"} className="link link-hover">
-            Resources
-          </Link>
-          <Link href={"/"} className="link link-hover">
-            Educational
-          </Link>
-          <Link href={"/"} className="link link-hover">
-            Community Leadership
-          </Link>
+          {loading ? (
+            <p className="text-sm">Loading services...</p>
+          ) : (
+            services.map((service, index) => (
+              <Link
+                key={index}
+                href={`/services#${service.category
+                  .toLowerCase()
+                  .replace(/\s+/g, "-")}`}
+                className="link link-hover"
+                scroll={false}
+              >
+                {service.category}
+              </Link>
+            ))
+          )}
         </nav>
         <nav>
           <h6 className="footer-title font-bold">Company</h6>
           <Link href={"/about"} className="link link-hover">
             About us
           </Link>
-          <Link href={"/"} className="link link-hover">
+          <Link href={"/about#contact"} className="link link-hover">
             Contact
           </Link>
           <Link href={"/"} className="link link-hover">
@@ -54,7 +83,8 @@ export default function Footer() {
             ></path>
           </svg>
           <p className="font-semibold">
-            Messiah Community Development Corporation
+            &copy; {new Date().getFullYear()} Messiah Community Development
+            Corporation. All rights reserved.
           </p>
         </aside>
         <nav className="md:place-self-center md:justify-self-end">
