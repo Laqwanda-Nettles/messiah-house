@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Hero() {
   return (
     <div
@@ -18,9 +20,12 @@ export default function Hero() {
           <p className="mb-5 text-2xl text-shadow">
             Join us in planting Seeds of Change through love and support.
           </p>
-          <button className="btn btn-primary font-bold text-lg shadow-md shadow-black hover:scale-105 hover:shadow-warning duration-300">
+          <Link
+            href={"/volunteer"}
+            className="btn btn-primary font-bold text-lg shadow-md shadow-black hover:scale-105 hover:shadow-warning duration-300"
+          >
             Get Involved
-          </button>
+          </Link>
         </div>
       </div>
     </div>
