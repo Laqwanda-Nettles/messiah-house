@@ -6,8 +6,25 @@ import Navbar from "@/components/Navbar";
 import Programs from "@/components/Programs";
 import Testimonials from "@/components/Testimonials";
 import Head from "next/head";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 export default function Services() {
+  const router = useRouter();
+
+  useEffect(() => {
+    if (router.asPath.includes("#")) {
+      const id = router.asPath.split("#")[1];
+      setTimeout(() => {
+        const section = document.getElementById(id);
+
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    }
+  }, [router.asPath]);
+
   return (
     <>
       <Head>
