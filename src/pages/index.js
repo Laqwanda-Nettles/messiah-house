@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>Messiah&apos;s House</title>
+        <title>Messiah&apos;s House CDC</title>
         <meta
           name="description"
           content="Messiah House Community Development Corporation non-profit home page."

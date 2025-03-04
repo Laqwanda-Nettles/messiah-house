@@ -11,10 +11,10 @@ export default function About() {
   return (
     <>
       <Head>
-        <title>About Us</title>
+        <title>MHCDC | About Us</title>
         <meta
           name="description"
-          content="Messiah House Community Development Corporation non-profit mission and vision statements."
+          content="Messiah House Community Development Corporation non-profit about, mission, and vision statements."
           key="desc"
         />
       </Head>

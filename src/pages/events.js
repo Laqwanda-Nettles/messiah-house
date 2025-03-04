@@ -7,7 +7,7 @@ export default function Events() {
   return (
     <>
       <Head>
-        <title>Events</title>
+        <title>MHCDC | Events</title>
         <meta
           name="description"
           content="Messiah House Community Development Corporation non-profit event page that displays upcoming events, news, and sponsors."

@@ -28,7 +28,7 @@ export default function Services() {
   return (
     <>
       <Head>
-        <title>Services</title>
+        <title>MHCDC | Services</title>
         <meta
           name="description"
           content="Messiah House Community Development Corporation non-profit Services and Programs."

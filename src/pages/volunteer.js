@@ -7,7 +7,7 @@ export default function Volunteer() {
   return (
     <>
       <Head>
-        <title>Volunteer</title>
+        <title>MHCDC | Volunteer</title>
         <meta
           name="description"
           content="Messiah House Community Development Corporation non-profit Volunteer Signup."

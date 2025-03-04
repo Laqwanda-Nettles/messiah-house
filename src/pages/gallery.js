@@ -7,7 +7,7 @@ export default function GalleryPage() {
   return (
     <>
       <Head>
-        <title>Gallery</title>
+        <title>MHCDC | Gallery</title>
         <meta
           name="description"
           content="Messiah House Community Development Corporation non-profit photo gallery."
