@@ -12,7 +12,7 @@ export default function Hero() {
       <div className="hero-content text-neutral-content text-center">
         <div className="max-w-md">
           <h1 className="mb-5 text-5xl font-bold text-shadow">
-            Welcome to Messiah House
+            Welcome to Messiah&apos;s House CDC
           </h1>
           <p className="mb-5 font-semibold text-3xl text-shadow">
             Growing Together, Changing Lives
