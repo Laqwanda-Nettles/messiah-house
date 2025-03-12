@@ -25,7 +25,7 @@ export default function VolunteerForm() {
     setSuccess(false);
 
     try {
-      const response = await fetch("/api/volunteer", {
+      const response = await fetch("http://localhost:5000/api/volunteers", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
