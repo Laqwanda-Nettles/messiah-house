@@ -56,8 +56,8 @@ export default function Footer() {
           <Link href={"/about#contact"} className="link link-hover">
             Contact
           </Link>
-          <Link href={"/"} className="link link-hover">
-            Jobs
+          <Link href={"/login"} className="link link-hover">
+            MHCDC Portal
           </Link>
         </nav>
         <nav>
