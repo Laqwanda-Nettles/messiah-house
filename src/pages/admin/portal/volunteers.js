@@ -1,7 +1,7 @@
 import AdminNavbar from "@/components/AdminNavbar";
 import VolunteerTable from "@/components/VolunteerTable";
 
-export default function Volunteer() {
+export default function AdminVolunteers() {
   return (
     <div className="flex h-screen">
       <AdminNavbar />
