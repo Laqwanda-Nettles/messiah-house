@@ -106,7 +106,7 @@ export default function VolunteerTable() {
     );
 
   return (
-    <div className="overflow-x-auto p-4">
+    <div className=" p-4">
       <div className="flex justify-between mb-4">
         <select
           className="select select-bordered"
@@ -136,7 +136,7 @@ export default function VolunteerTable() {
           {sortOrder === "asc" ? "Sort Desc" : "Sort Asc"}
         </button>
       </div>
-      <table className="table w-full border rounded-lg shadow-lg">
+      <table className="overflow-x-auto table w-full border rounded-lg shadow-lg">
         <thead>
           <tr className="bg-gray-200 text-gray-700">
             <th>Name</th>
