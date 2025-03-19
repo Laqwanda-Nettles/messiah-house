@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function JoinProgramCTA() {
   return (
     <section className="border-t-4 border-primary py-12 px-6 text-center bg-gray-100 mt-16">
@@ -8,9 +10,12 @@ export default function JoinProgramCTA() {
         Join one of our programs today and take the next step towards personal
         and professional growth.
       </p>
-      <button className="btn btn-primary mt-6 px-6 py-3 text-lg">
-        Explore Programs
-      </button>
+      <Link
+        href={"/program"}
+        className="btn btn-primary mt-6 px-6 py-3 text-lg"
+      >
+        Join A Program
+      </Link>
     </section>
   );
 }
