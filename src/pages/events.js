@@ -24,7 +24,7 @@ export default function Events() {
       />
       <div className="flex justify-center items-center m-6">
         <iframe
-          src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=UTC&showPrint=0&title=Messiah's%20House%20Test%20Calendar&src=M2U4ZjhjNzZmMmEzNmM2N2ExZDlkMWQ5NWE5ZWRjMGIwYzdmZTllN2NlYWUxYTIzYmE1YmYxZjkwZGJmNDU0NEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%234285F4"
+          src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FChicago&showPrint=0&showCalendars=0&showTz=0&mode=MONTH&src=YzA2MzY2ODIyMzc4NDcwZWUxMGIwNzA5YTEwZTI0Y2E0NjExY2MyNmJmNzIyZTFlNjI4Mzc4YjMxNzZmMjJjMkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%237986CB&color=%230B8043"
           className="border-2 border-secondary shadow-md shadow-info rounded-xl"
           width="800"
           height="600"
