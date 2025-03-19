@@ -4,8 +4,16 @@ import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import ServiceSection from "@/components/ServiceSection";
 import Head from "next/head";
+import { useEffect } from "react";
+
+const BACKENDURL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 export default function Home() {
+  // wake up the backend
+  useEffect(() => {
+    fetch(`${BACKENDURL}/api/hello`);
+  }, []);
+
   return (
     <div>
       <Head>
