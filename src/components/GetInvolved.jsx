@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function GetInvolvedCTA() {
+export default function GetInvolved() {
   return (
     <div
       className="hero min-h-60"

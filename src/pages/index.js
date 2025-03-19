@@ -1,5 +1,5 @@
 import Footer from "@/components/Footer";
-import GetInvolvedCTA from "@/components/GetInvolvedCta";
+import GetInvolvedCTA from "@/components/GetInvolved";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import ServiceSection from "@/components/ServiceSection";

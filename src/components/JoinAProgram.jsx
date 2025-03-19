@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function JoinProgramCTA() {
+export default function JoinAProgram() {
   return (
     <section className="border-t-4 border-primary py-12 px-6 text-center bg-gray-100 mt-16">
       <h2 className="text-3xl font-bold text-primary">
