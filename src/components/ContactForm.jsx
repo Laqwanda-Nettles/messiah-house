@@ -26,15 +26,26 @@ export default function ContactForm() {
         body: JSON.stringify(formData),
       });
 
+      const result = await response.json();
+
       if (response.ok) {
-        setStatus("success");
+        setStatus({
+          type: "success",
+          message: result.message || "Message sent successfully!",
+        });
         setFormData({ name: "", email: "", message: "" });
       } else {
-        setStatus("error");
+        setStatus({
+          type: "error",
+          message: result.error || "Failed to send message. Try again.",
+        });
       }
     } catch (error) {
       console.error("Error submitting form: ", error);
-      setStatus("error");
+      setStatus({
+        type: "error",
+        message: "An error occurred. Please try again.",
+      });
     } finally {
       setLoading(false);
     }
@@ -48,6 +59,17 @@ export default function ContactForm() {
           hear from you.
         </p>
       </div>
+
+      {/* Alert Message */}
+      {status && (
+        <div
+          className={`alert ${
+            status.type === "success" ? "alert-success" : "alert-error"
+          } shadow-lg mb-4`}
+        >
+          <span>{status.message}</span>
+        </div>
+      )}
 
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Name Field */}
