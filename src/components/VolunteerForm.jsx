@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+const BACKENDURL = process.env.NEXT_PUBLIC_BACKEND_URL;
+
 export default function VolunteerForm() {
   const [formData, setFormData] = useState({
     name: "",
@@ -25,7 +27,7 @@ export default function VolunteerForm() {
     setSuccess(false);
 
     try {
-      const response = await fetch("http://localhost:5000/api/volunteers", {
+      const response = await fetch(`${BACKENDURL}/api/volunteers`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

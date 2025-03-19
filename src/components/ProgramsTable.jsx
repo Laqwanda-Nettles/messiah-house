@@ -9,32 +9,46 @@ const statusColors = {
   Withdrawn: "badge-outline badge-secondary",
 };
 
+const BACKENDURL = process.env.NEXT_PUBLIC_BACKEND_URL;
+
 export default function ProgramsTable() {
   const [signups, setSignups] = useState([]);
   const [filteredSignups, setFilteredSignups] = useState([]);
   const [programs, setPrograms] = useState([]);
   const [statusFilter, setStatusFilter] = useState("");
   const [programFilter, setProgramFilter] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchSignups = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await fetch("http://localhost:5000/api/programs", {
+        const response = await fetch(`${BACKENDURL}/api/programs`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
         });
-        if (!response.ok) throw new Error("Failed to fetch signups");
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.error || "Failed to fetch signups");
+        }
+
         const data = await response.json();
+
         setSignups(data);
         setFilteredSignups(data);
       } catch (error) {
         console.error("Error fetching signups:", error);
+        setError(error.message);
+      } finally {
+        setLoading(false);
       }
     };
+
     fetchSignups();
   }, []);
 
@@ -69,17 +83,14 @@ export default function ProgramsTable() {
   const updateStatus = async (id, newStatus) => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(
-        `http://localhost:5000/api/programs/${id}/status`,
-        {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({ status: newStatus }),
-        }
-      );
+      const response = await fetch(`${BACKENDURL}/api/programs/${id}/status`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ status: newStatus }),
+      });
 
       if (!response.ok) throw new Error("Failed to update status");
       setSignups((prevSignups) =>
@@ -91,6 +102,21 @@ export default function ProgramsTable() {
       console.error("Error updating status:", error);
     }
   };
+
+  if (loading) {
+    return (
+      <p className="text-4xl text-success font-semibold text-center p-4 animate-pulse">
+        Loading program signups...
+      </p>
+    );
+  }
+  if (error) {
+    return (
+      <p className="text-4xl font-semibold text-center p-4 text-red-500">
+        Error: {error}
+      </p>
+    );
+  }
 
   return (
     <div className="p-6 max-w-4xl mx-auto bg-white shadow-lg rounded-lg">

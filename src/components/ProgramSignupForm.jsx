@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+const BACKENDURL = process.env.NEXT_PUBLIC_BACKEND_URL;
+
 export default function ProgramSignupForm() {
   const [services, setServices] = useState([]);
   const [selectedProgram, setSelectedProgram] = useState("");
@@ -35,7 +37,7 @@ export default function ProgramSignupForm() {
     setMessage(null);
 
     try {
-      const response = await fetch("http://localhost:5000/api/programs", {
+      const response = await fetch(`${BACKENDURL}/api/programs`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

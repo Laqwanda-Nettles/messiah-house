@@ -4,6 +4,8 @@ import Link from "next/link";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/config/firebase";
 
+const BACKENDURL = process.env.NEXT_PUBLIC_BACKEND_URL;
+
 export default function LoginForm() {
   const [formData, setFormData] = useState({
     email: "",
@@ -32,14 +34,11 @@ export default function LoginForm() {
 
       const idToken = await userCredential.user.getIdToken();
 
-      const response = await fetch(
-        "http://localhost:5000/api/auth/verify-token",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ token: idToken }),
-        }
-      );
+      const response = await fetch(`${BACKENDURL}/api/auth/verify-token`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: idToken }),
+      });
 
       const data = await response.json();
       if (!response.ok) throw new Error(data.error || "Login failed");

@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+const BACKENDURL = process.env.NEXT_PUBLIC_BACKEND_URL;
+
 export default function VolunteerTable() {
   const [volunteers, setVolunteers] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -12,7 +14,7 @@ export default function VolunteerTable() {
     const fetchVolunteers = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await fetch("http://localhost:5000/api/volunteers", {
+        const response = await fetch(`${BACKENDURL}/api/volunteers`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -59,7 +61,7 @@ export default function VolunteerTable() {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `http://localhost:5000/api/volunteers/${id}/status`,
+        `${BACKENDURL}/api/volunteers/${id}/status`,
         {
           method: "PATCH",
           headers: {
@@ -107,6 +109,10 @@ export default function VolunteerTable() {
 
   return (
     <div className=" p-4">
+      <h2 className="text-3xl font-bold text-center mt-2 mb-5">
+        Volunteer Signups
+      </h2>
+
       <div className="flex justify-between mb-4">
         <select
           className="select select-bordered"

@@ -3,6 +3,8 @@ import { useRouter } from "next/router";
 import { auth } from "@/config/firebase";
 import Link from "next/link";
 
+const BACKENDURL = process.env.NEXT_PUBLIC_BACKEND_URL;
+
 export default function RegisterForm() {
   const [formData, setFormData] = useState({
     email: "",
@@ -32,7 +34,7 @@ export default function RegisterForm() {
 
       const idToken = await user.getIdToken();
 
-      const response = await fetch("http://localhost:5000/api/auth/register", {
+      const response = await fetch(`${BACKENDURL}/api/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
