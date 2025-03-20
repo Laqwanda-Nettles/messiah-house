@@ -3,21 +3,12 @@ import LatestBlogs from "@/components/LatestBlogs";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import { useAuth } from "@/context/AuthProvider";
 import Head from "next/head";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
+import Link from "next/link";
+
+const admin = process.env.NEXT_PUBLIC_ADMIN_USER;
 
 export default function Portal() {
-  const { user, loading } = useAuth();
-  const router = useRouter();
-
-  useEffect(() => {
-    if (!loading && !user) {
-      router.push("/login");
-    }
-  }, [user, loading, router]);
-
-  if (loading) return <p>Loading...</p>;
-  if (!user) return null;
+  const { user } = useAuth();
 
   return (
     <ProtectedRoute>
@@ -32,8 +23,37 @@ export default function Portal() {
       <div className="flex h-screen">
         <AdminNavbar />
         <div className="flex-1 overflow-y-auto m-4">
-          <div className="bg-emerald-100 p-4 rounded shadow-md mb-4">
-            <h1 className="text-xl font-semibold">Welcome, {user.email}!</h1>
+          <div className="bg-emerald-100 p-4 rounded-md shadow-md mb-4">
+            <h1 className="text-xl font-semibold">
+              {user ? `Welcome, ${user.email}!` : "Welcome to MHCDC Portal!"}
+            </h1>
+          </div>
+          <div className="bg-rose-50 p-4 rounded-md shadow-md mb-4">
+            {user && user.email === admin ? (
+              <div className="flex justify-evenly">
+                <Link
+                  href={"/register"}
+                  className="btn btn-outline btn-success btn-wide text-lg transition duration-300"
+                >
+                  Register
+                </Link>
+                <a
+                  href="https://calendar.google.com/calendar/u/0/r"
+                  className="btn btn-outline btn-secondary btn-wide text-lg transition duration-300"
+                >
+                  Add an Event
+                </a>
+              </div>
+            ) : (
+              <div className="flex justify-center">
+                <Link
+                  href={"/register"}
+                  className="btn btn-outline btn-success btn-wide text-lg transition duration-300"
+                >
+                  Register
+                </Link>
+              </div>
+            )}
           </div>
           <LatestBlogs />
         </div>
