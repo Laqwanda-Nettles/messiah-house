@@ -33,13 +33,13 @@ export default function Portal() {
               <div className="flex justify-evenly">
                 <Link
                   href={"/register"}
-                  className="btn btn-outline btn-success btn-wide text-lg transition duration-300"
+                  className="btn btn-outline btn-success md:btn-wide text-lg transition duration-300"
                 >
                   Register
                 </Link>
                 <a
                   href="https://calendar.google.com/calendar/u/0/r"
-                  className="btn btn-outline btn-secondary btn-wide text-lg transition duration-300"
+                  className="btn btn-outline btn-secondary md:btn-wide text-lg transition duration-300"
                 >
                   Add an Event
                 </a>
