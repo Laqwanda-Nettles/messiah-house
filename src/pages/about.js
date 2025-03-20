@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import Founder from "@/components/Founder";
 import GetInvolvedCTA from "@/components/GetInvolved";
 import Header from "@/components/Header";
+import MeetDeveloper from "@/components/MeetDeveloper";
 import MissionSection from "@/components/MissionSection";
 import Navbar from "@/components/Navbar";
 import Head from "next/head";
@@ -27,7 +28,7 @@ export default function About() {
 
       <MissionSection />
       <Founder />
-
+      <MeetDeveloper />
       <div id="contact" className="bg-base-200 p-6">
         <ContactForm />
       </div>
