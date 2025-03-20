@@ -37,6 +37,13 @@ export default function VolunteerForm() {
         throw new Error("Something went wrong. Please try again.");
       }
 
+      //Send email notification to client
+      await fetch("/api/volunteer", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
       setSuccess(true);
       setFormData({
         name: "",
