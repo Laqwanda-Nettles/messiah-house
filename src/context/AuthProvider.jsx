@@ -19,10 +19,10 @@ export function AuthProvider({ children }) {
           setUser(currentUser);
         } catch (error) {
           console.error("Token refresh error: ", error);
-          handleLogout();
+          handleLogout(false);
         }
       } else {
-        handleLogout();
+        setUser(null);
       }
 
       setLoading(false);
@@ -31,11 +31,13 @@ export function AuthProvider({ children }) {
     return () => unsubscribe();
   }, []);
 
-  const handleLogout = async () => {
+  const handleLogout = async (redirect = true) => {
     await signOut(auth);
     localStorage.removeItem("token");
     setUser(null);
-    router.push("/login");
+    if (redirect) {
+      router.push("/login");
+    }
   };
 
   return (
