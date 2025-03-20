@@ -1,6 +1,6 @@
 import AdminNavbar from "@/components/AdminNavbar";
-import BlogCard from "@/components/BlogCard";
 import BlogForm from "@/components/BlogForm";
+import BlogSection from "@/components/BlogSection";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import Head from "next/head";
 
@@ -29,8 +29,7 @@ export default function AdminBlogs() {
           <h2 className="text-2xl font-semibold divider divider-accent my-5">
             Blogs
           </h2>
-
-          <BlogCard />
+          <BlogSection />
         </div>
       </div>
     </ProtectedRoute>
