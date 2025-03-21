@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import BlogForm from "./BlogForm";
 const BACKENDURL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 const BlogCard = ({ blog, onUpdate, onDelete }) => {
@@ -89,6 +90,13 @@ const BlogSection = () => {
 
   return (
     <div className="p-5 w-full flex flex-col items-center">
+      {/* Pass fetchBlogs to BlogForm */}
+      <BlogForm fetchBlogs={fetchBlogs} />
+
+      <h2 className="text-3xl font-semibold divider divider-accent my-8">
+        Blogs
+      </h2>
+
       {editingBlog && (
         <form
           className="w-full md:w-4/6 mb-5 p-4 border-2 rounded-md shadow-md"
