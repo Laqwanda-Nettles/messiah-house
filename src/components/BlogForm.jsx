@@ -2,7 +2,7 @@ import { useState } from "react";
 
 const BACKENDURL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
-const BlogForm = () => {
+const BlogForm = ({ fetchBlogs }) => {
   const [formData, setFormData] = useState({
     title: "",
     content: "",
@@ -43,6 +43,14 @@ const BlogForm = () => {
         content: "",
         author: "",
       });
+
+      //Close modal
+      document.getElementById("my_modal_2").close();
+
+      // Delay fetching to allow UI updates
+      setTimeout(() => {
+        fetchBlogs();
+      }, 200);
     } catch (error) {
       setError(error.message);
     } finally {
