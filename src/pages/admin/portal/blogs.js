@@ -1,5 +1,4 @@
 import AdminNavbar from "@/components/AdminNavbar";
-import BlogForm from "@/components/BlogForm";
 import BlogSection from "@/components/BlogSection";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import Head from "next/head";
@@ -22,13 +21,6 @@ export default function AdminBlogs() {
             Admin Blog Management
           </h1>
 
-          {/* Blog Form */}
-          <div className="flex justify-center items-center">
-            <BlogForm />
-          </div>
-          <h2 className="text-2xl font-semibold divider divider-accent my-5">
-            Blogs
-          </h2>
           <BlogSection />
         </div>
       </div>
