@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useAuth } from "@/context/AuthProvider";
 
-const facebookUrl = process.env.FACEBOOK_URL;
+const facebookUrl = process.env.NEXT_PUBLIC_FACEBOOK_URL;
 
 export default function Footer() {
   const [services, setServices] = useState([]);
