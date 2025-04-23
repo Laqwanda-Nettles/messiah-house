@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -61,7 +62,7 @@ export default function ContactForm() {
       </div>
 
       {/* Alert Message */}
-      {status && (
+      {status && status.type !== "success" && (
         <div
           className={`alert ${
             status.type === "success" ? "alert-success" : "alert-error"
@@ -71,61 +72,97 @@ export default function ContactForm() {
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-4">
-        {/* Name Field */}
-        <div>
-          <label className="block text-lg font-medium text-gray-700">
-            Name
-          </label>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-            className="w-full mt-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-          />
-        </div>
+      <AnimatePresence mode="wait">
+        {status?.type === "success" ? (
+          <motion.div
+            key="thank-you"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5 }}
+            className="text-center space-y-4"
+          >
+            <p className="text-2xl font-semibold text-green-700">
+              Thank you for reaching out!
+            </p>
+            <p className="text-lg">
+              We&apos;ll be in touch within the next 24 hours. If you don&apos;t
+              hear from us, please feel free to reach out again or call us
+              directly at <span className="font-bold">(225) 460-0250</span>.
+            </p>
+            <button
+              onClick={() => setStatus(null)}
+              className="mt-4 btn btn-primary text-lg font-bold rounded-lg"
+            >
+              Send Another Message
+            </button>
+          </motion.div>
+        ) : (
+          <motion.form
+            key="form"
+            onSubmit={handleSubmit}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5 }}
+            className="space-y-4"
+          >
+            {/* Name Field */}
+            <div>
+              <label className="block text-lg font-medium text-gray-700">
+                Name
+              </label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                className="w-full mt-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+              />
+            </div>
 
-        {/* Email Field */}
-        <div>
-          <label className="block text-lg font-medium text-gray-700">
-            Email
-          </label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-            className="w-full mt-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-          />
-        </div>
+            {/* Email Field */}
+            <div>
+              <label className="block text-lg font-medium text-gray-700">
+                Email
+              </label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                className="w-full mt-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+              />
+            </div>
 
-        {/* Message Field */}
-        <div>
-          <label className="block text-lg font-medium text-gray-700">
-            Message
-          </label>
-          <textarea
-            name="message"
-            rows="4"
-            value={formData.message}
-            onChange={handleChange}
-            required
-            className="w-full mt-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-          ></textarea>
-        </div>
+            {/* Message Field */}
+            <div>
+              <label className="block text-lg font-medium text-gray-700">
+                Message
+              </label>
+              <textarea
+                name="message"
+                rows="4"
+                value={formData.message}
+                onChange={handleChange}
+                required
+                className="w-full mt-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+              ></textarea>
+            </div>
 
-        {/* Submit Button */}
-        <button
-          type="submit"
-          className="w-full bg-primary text-white font-bold py-2 rounded-lg hover:bg-primary-dark transition"
-          disabled={loading}
-        >
-          {loading ? "Sending..." : "Send Message"}
-        </button>
-      </form>
+            {/* Submit Button */}
+            <button
+              type="submit"
+              className="w-full bg-primary text-white font-bold py-2 rounded-lg hover:bg-primary-dark transition"
+              disabled={loading}
+            >
+              {loading ? "Sending..." : "Send Message"}
+            </button>
+          </motion.form>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

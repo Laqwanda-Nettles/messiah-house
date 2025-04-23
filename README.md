@@ -466,3 +466,51 @@ const updateStatus = async (id, newStatus) => {
 ## Conclusion
 
 This final phase successfully integrated a custom Express backend hosted on Render, added email notifications using a Next.js API route, built structured tables, and deployed the project. The Messiah House portal is now fully functional for managing volunteer and program signups efficiently.
+
+# Messiah House Website Updates
+
+## ✨ Overview
+
+This update enhances user experience across the Messiah House website by improving form interactions, providing clear donation guidance, and dynamically showcasing upcoming events and news updates.
+
+---
+
+## ✅ What's New
+
+### 🔔 Form Enhancements
+
+- Updated all forms to display **success messages** after submission, providing user feedback and confirmation.
+- Included **contact information** for follow-up, ensuring visitors know how to get in touch directly.
+- Added **Framer Motion animations** to forms for smoother, more engaging transitions and UI polish.
+
+---
+
+### 💸 Donation Page & Component
+
+- Added a dedicated **Donation Page** to explain current contribution options.
+- Communicates clearly that **online donations are not being accepted at this time**.
+- Offers alternative ways to support Messiah House, such as:
+  - Mailing a check
+  - In-person contributions
+  - Volunteering or in-kind support
+
+---
+
+### 📰 Blog/News & Events Page Integration
+
+- Added a **"Latest News & Updates"** section to the Events page.
+- This area highlights:
+  - **Upcoming Events**
+  - **Recent Impact Stories**
+  - **Community News**
+
+This ensures visitors stay informed and connected with what’s happening at Messiah House.
+
+---
+
+## ⚙️ Tech Stack Updates
+
+- Used **Framer Motion** for animation enhancements in form UI.
+- Continued use of **Next.js**, **Tailwind CSS**, and custom components for dynamic rendering and design.
+
+---

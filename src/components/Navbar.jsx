@@ -73,9 +73,12 @@ export default function Navbar() {
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn btn-warning font-bold text-md max-w-32 lg:text-lg lg:max-w-40">
+        <Link
+          href={"/donate"}
+          className="btn btn-warning font-bold text-md max-w-32 lg:text-lg lg:max-w-40"
+        >
           Donate Now
-        </a>
+        </Link>
       </div>
     </div>
   );

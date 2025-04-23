@@ -7,6 +7,7 @@ const BACKENDURL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 export default function RegisterForm() {
   const [formData, setFormData] = useState({
+    name: "",
     email: "",
     password: "",
     role: "employee",
@@ -71,6 +72,26 @@ export default function RegisterForm() {
           </div>
         )}
         <form onSubmit={handleSubmit} className="space-y-4">
+          {/* Name Input */}
+          <div>
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Enter your name"
+              className="input input-bordered focus:input-primary w-full"
+              onChange={handleChange}
+              required
+              aria-required="true"
+            />
+          </div>
+
           {/* Email Input */}
           <div>
             <label

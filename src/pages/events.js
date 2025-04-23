@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import LatestBlogs from "@/components/LatestBlogs";
 import Navbar from "@/components/Navbar";
 import Head from "next/head";
 
@@ -32,7 +33,9 @@ export default function Events() {
           scrolling="no"
         ></iframe>
       </div>
-
+      <div className="m-5">
+        <LatestBlogs />
+      </div>
       <Footer />
     </>
   );

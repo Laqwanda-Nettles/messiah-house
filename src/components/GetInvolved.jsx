@@ -32,7 +32,9 @@ export default function GetInvolved() {
               support those in need.
             </p>
             <div className="card-actions justify-center">
-              <button className="btn btn-warning">Donate Now</button>
+              <Link href={"/donate"} className="btn btn-warning">
+                Donate Now
+              </Link>
             </div>
           </div>
         </div>
